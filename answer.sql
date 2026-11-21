@@ -6,37 +6,37 @@
 -- Retrieve employee details and their office codes
 
 SELECT
-    employees.firstName,
-    employees.lastName,
-    employees.email,
-    employees.officeCode
-FROM employees
-INNER JOIN offices
-    ON employees.officeCode = offices.officeCode;
+    e.firstName,
+    e.lastName,
+    e.email,
+    e.officeCode
+FROM employees AS e
+INNER JOIN offices AS o
+    ON e.officeCode = o.officeCode;
 
 
 -- QUESTION 2: LEFT JOIN
 -- Retrieve product names, vendors and product lines
 
 SELECT
-    products.productName,
-    products.productVendor,
-    products.productLine
-FROM products
-LEFT JOIN productlines
-    ON products.productLine = productlines.productLine;
+    p.productName,
+    p.productVendor,
+    pl.productLine
+FROM products AS p
+LEFT JOIN productlines AS pl
+    ON p.productLine = pl.productLine;
 
 
 -- QUESTION 3: RIGHT JOIN
 -- Retrieve the first 10 orders and their customer numbers
 
 SELECT
-    orders.orderDate,
-    orders.shippedDate,
-    orders.status,
-    orders.customerNumber
-FROM customers
-RIGHT JOIN orders
-    ON customers.customerNumber = orders.customerNumber
-ORDER BY orders.orderNumber ASC
+    o.orderDate,
+    o.shippedDate,
+    o.status,
+    o.customerNumber
+FROM customers AS c
+RIGHT JOIN orders AS o
+    ON c.customerNumber = o.customerNumber
+ORDER BY o.orderNumber ASC
 LIMIT 10;
